@@ -7,7 +7,6 @@ const selectVoteByUserId = async (userId, entryId) => {
     "SELECT * FROM votes WHERE user_id = ? AND entry_id = ?",
     [userId, entryId]
   );
-  console.log(vote);
   return vote;
 };
 

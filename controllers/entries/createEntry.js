@@ -22,19 +22,14 @@ const createEntry = async (req, res, next) => {
 
     //-----------------------CODIGO NUEVO PARA IMGANES ------------------------------------------
 
-    //console.log(req.files);
-    //console.log(req.files.image);
     //req.files---> .image es el nombre de la KEY que ponemos en el postman
     let imageFileName;
     if (req.files && req.files.image) {
       //Creo el path del directorio uploads
       const uploadsDir = path.join(__dirname, `../../uploads`);
-      console.log(uploadsDir);
       //Creo el directorio si no existe
       await createPathIfNotExists(uploadsDir);
-      console.log("Sale de createpath");
       //procesar la imagen
-      console.log(req.files.image);
       const image = sharp(req.files.image.data);
       image.resize(1000);
       //guardo la imagen con un nombre aleatorio en el directorio uploads

@@ -1,7 +1,6 @@
 const { generateError } = require("../helpers");
 
 const checkAdmin = async (req, res, next) => {
-  console.log(req.auth.role);
   try {
     if (req.auth.role !== "admin") {
       throw generateError("You must be an admin to do that", 400);

@@ -19,7 +19,6 @@ const createVote = async (req, res, next) => {
     const voteWithSameUserId = await selectVoteByUserId(userId, entryId);
     //busca usuario con el mismo email
 
-    console.log(voteWithSameUserId);
     if (voteWithSameUserId) {
       throw generateError("that entry already has your vote", 400);
     }

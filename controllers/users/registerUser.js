@@ -3,7 +3,6 @@ const { v4: uuidv4 } = require("uuid");
 const { insertUser, selectUserByEmail } = require("../../repositories/users");
 const { generateError } = require("../../helpers");
 const { sendMail } = require("../../helpers");
-//const { promise } = require("bcrypt/promises");
 const { newUserSchema } = require("../../schemas/users");
 
 const registerUser = async (req, res, next) => {
@@ -24,7 +23,6 @@ const registerUser = async (req, res, next) => {
       //lanza error si existe el usuario
     }
 
-    console.log(password);
     const encryptedPassword = await bcrypt.hash(password, 10);
     //cifra contraseña
 
