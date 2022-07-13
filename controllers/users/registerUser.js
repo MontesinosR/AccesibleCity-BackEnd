@@ -19,7 +19,10 @@ const registerUser = async (req, res, next) => {
     //busca usuario con el mismo email
 
     if (userWithSameEmail) {
-      throw generateError("Already exists an user with that email", 400);
+      throw generateError(
+        "The e-mail provided belongs to an existing account",
+        400
+      );
       //lanza error si existe el usuario
     }
 
