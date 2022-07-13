@@ -14,13 +14,13 @@ const createVote = async (req, res, next) => {
     //recogemos del body los parametros
     const entryDB = await selectEntryById(entryId);
     if (!entryDB) {
-      throw generateError("that entry does not exist", 404);
+      throw generateError("That entry does not exist", 404);
     }
     const voteWithSameUserId = await selectVoteByUserId(userId, entryId);
     //busca usuario con el mismo email
 
     if (voteWithSameUserId) {
-      throw generateError("that entry already has your vote", 400);
+      throw generateError("That entry already has your vote", 400);
     }
 
     const insertVote = await insertVoteRepositories({
