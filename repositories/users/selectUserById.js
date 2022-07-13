@@ -1,5 +1,7 @@
 const getPool = require("../../database/getPool");
 
+//Esta función se llama desde registerUser.js en la carpeta controllers/users para comprobar que exista un usuario con ese id.
+
 const selectUserById = async (id) => {
   const pool = getPool();
 
@@ -12,6 +14,3 @@ const selectUserById = async (id) => {
 };
 
 module.exports = selectUserById;
-
-//Esta función se llama desde registerUser.js en la carpeta controllers/users para comprobar que exista
-//un usuario con ese id.
