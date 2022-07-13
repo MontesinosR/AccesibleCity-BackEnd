@@ -41,9 +41,9 @@ const registerUser = async (req, res, next) => {
     //desctructuring de process.env
 
     await sendMail(
-      "Bienvenido a Urbanismo.inc tu lugar chick para hacer más cool tu ciudad",
+      "Welcome to AccesibleCity App, please confirm your registration",
       `
-      <p>Activation code: ${registrationCode}</p> 
+      <a href="http://localhost:${SERVER_PORT}/users/activate/${registrationCode}">Click here to activate your account: </a> 
       `,
       email
     );
