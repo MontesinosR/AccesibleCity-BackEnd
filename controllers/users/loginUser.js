@@ -9,34 +9,11 @@ const loginUser = async (req, res, next) => {
 
     const user = await selectUserByEmail(email);
 
-    /** Esto sería un código alternativo para validar que exista el usuario y que la password esté bien */
-    // if (!user) {
-    //   generateError("Wrong password or email", 400);
-    // }
-
-    // const encryptedPassword = user?.password;
-
-    // const isPasswordOk = await bcrypt.compare(password, encryptedPassword);
-
-    // if (!isPasswordOk) {
-    //   generateError("Wrong password or email", 400);
-    // }
-    //----------------------------------------------------
-    // const encryptedPassword = user.password;
-
-    //const isLoginValid =
-    // user && (await bcrypt.compare(password, encryptedPassword));
-
-    // if (!isLoginValid) {
-    //  generateError("Wrong password or email", 400);
-    // }
-    //--------------------------------------------------
-
     // Compruebo que las contraseñas coinciden
-    const validPassword = await bcrypt.compare(password, user.password);
+    const validPassword = await bcrypt.compare(password, user?.password);
 
     if (!validPassword) {
-      throw generateError("La contraseña no coincide", 401);
+      throw generateError("Password does not match", 401);
     }
 
     if (user.registrationCode) {
