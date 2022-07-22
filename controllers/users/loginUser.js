@@ -9,11 +9,14 @@ const loginUser = async (req, res, next) => {
 
     const user = await selectUserByEmail(email);
 
+    if (!user) {
+      throw generateError("User does not exist", 404);
+    }
     // Compruebo que las contraseñas coinciden
-    const validPassword = await bcrypt.compare(password, user?.password);
+    const validPassword = await bcrypt.compare(password, user.password);
 
     if (!validPassword) {
-      throw generateError("Password does not match", 401);
+      throw generateError("Password does not match", 401); // Prueba a cambiar generateError por toast() - Failed
     }
 
     if (user.registrationCode) {
